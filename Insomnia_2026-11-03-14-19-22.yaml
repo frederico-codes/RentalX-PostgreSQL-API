@@ -1,0 +1,157 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: RENTAL
+meta:
+  id: wrk_d348a6c38cb64145ba09031e621a00b9
+  created: 1793391037486
+  modified: 1793391037486
+  description: ""
+collection:
+  - name: categories
+    meta:
+      id: fld_5dc48dd0dc3d4d88b9f605806f52eaac
+      created: 1793391180812
+      modified: 1793391198952
+      sortKey: -1793391180812
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/{{ _.resource }}"
+        name: create
+        meta:
+          id: req_db09320ef2b54b8b97dfae254f52aa52
+          created: 1793391244424
+          modified: 1793392022183
+          isPrivate: false
+          description: ""
+          sortKey: -1793391244424
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "SUV",
+            	"description": "furado a balas"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/{{ _.resource }}"
+        name: list
+        meta:
+          id: req_88ca619d53b941cd98ea49ac04f19f38
+          created: 1793421679681
+          modified: 1793421701778
+          isPrivate: false
+          description: ""
+          sortKey: -1793421679681
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/{{ _.resource }}/import"
+        name: import
+        meta:
+          id: req_ae2f5a5bda6a4ca096165df930cdbe24
+          created: 1793456182304
+          modified: 1793456280891
+          isPrivate: false
+          description: ""
+          sortKey: -1793456182304
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: file
+              value: ""
+              description: ""
+              disabled: false
+              fileName: C:\Users\Frederico\Documents\1615818549022-attachment.csv
+              type: file
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      resource: categories
+  - name: specifications
+    meta:
+      id: fld_a42b7517d46048a0b7cf91cf6aa4fda5
+      created: 1793421734232
+      modified: 1793421769703
+      sortKey: -1793421734232
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/{{ _.resource }}"
+        name: create
+        meta:
+          id: req_b1169b23d51a49dba0403f5189d64f5e
+          created: 1793421739884
+          modified: 1793421894872
+          isPrivate: false
+          description: ""
+          sortKey: -1793421739884
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Câmbio automático",
+            	"description": "carro clonado"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      resource: specifications
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_2fb0aca1f872188f5893a92b8c393bf69568e00c
+    created: 1793391037496
+    modified: 1793391037496
+environments:
+  name: Base Environment
+  meta:
+    id: env_2fb0aca1f872188f5893a92b8c393bf69568e00c
+    created: 1793391037491
+    modified: 1793391037491
+    isPrivate: false
+  subEnvironments:
+    - name: New Environment
+      meta:
+        id: env_f56edc896a4a4457abb9edc9847e2e9b
+        created: 1793391051835
+        modified: 1793391130185
+        isPrivate: false
+        sortKey: 1793391051835
+      data:
+        base_url: localhost:3333
+      color: "#12f33f"
