@@ -1,10 +1,11 @@
+
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX Documentation",
-    "description": "This is an API Rent",
+    "title": "RentX Documentation",
+    "description": "This is a car rental API",
     "version": "1.0.0",
-    "conatct": {
+    "contact": {
       "email": "fredericonakajimanakajima@gmail.com"
     }
   },
@@ -15,14 +16,19 @@
         "summary": "Create a category",
         "description": "Create a new category",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
-              "schema":{
-                "name":{
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
+              "schema": {
+                "type": "object",
+                "required": ["name", "description"],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
                 }
               },
               "example": {
@@ -37,28 +43,28 @@
             "description": "Created"
           },
           "500": {
-            "description": "Category alread exists"
+            "description": "Category already exists"
           }
         }
       },
-      "get":{
-        "tags":["Category"],
-        "summary":"List all categories",
-        "description":"List all categories",
-        "responses":{
-          "200":{
+      "get": {
+        "tags": ["Category"],
+        "summary": "List all categories",
+        "description": "List all categories",
+        "responses": {
+          "200": {
             "description": "Success",
-            "content":{
-              "application/json":{
-                "schema":{
-                  "type":"array",
-                  "items":{
-                    "type":"object",
-                    "properties":{
-                      "name":{
-                        "type":"string"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
                       },
-                      "description":{
+                      "description": {
                         "type": "string"
                       }
                     }
@@ -69,7 +75,73 @@
           }
         }
       }
-
+    },
+    "/categories/import": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Upload a new category",
+        "description": "Upload a new category",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["file"],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specifications"],
+        "summary": "Create a specification",
+        "description": "Create a new specification",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "description"],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "Air conditioning",
+                "description": "Vehicle air conditioning"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Specification already exists"
+          }
+        }
+      }
     }
   }
 }

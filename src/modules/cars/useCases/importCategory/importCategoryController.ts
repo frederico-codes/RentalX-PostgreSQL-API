@@ -1,21 +1,22 @@
 import { Request, Response } from "express";
 import { ImportCategoryUseCase } from "./importCategoryUseCase";
+import { container } from "tsyringe";
 
 class ImportCategoryController {
-  constructor(private importCategoryUseCase: ImportCategoryUseCase) {}
-
-  handle(request: Request, response: Response): Response {
-    const { file } = request;
+  async handle(request: Request, response: Response): Promise<Response> {
+    const file = request.file;
 
     if (!file) {
       return response.status(400).json({
-        error: "Nenhum arquivo enviado",
+        message: "Arquivo não enviado",
       });
     }
 
-    this.importCategoryUseCase.execute(file);
+    const importCategoryUseCase = container.resolve(ImportCategoryUseCase);
 
-    return response.send();
+    await importCategoryUseCase.execute(file);
+
+    return response.status(201).send();
   }
 }
 

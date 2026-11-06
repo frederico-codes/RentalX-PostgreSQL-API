@@ -1,4 +1,6 @@
 import express, { json } from "express"
+import "./database"
+import "./shared/container"
 import { routes } from "./routes"
 import swaggerUI from "swagger-ui-express"
 import swaggerFile from "./swagger.json"

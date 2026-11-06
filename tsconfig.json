@@ -14,7 +14,9 @@
     "esModuleInterop": true,
     // "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
-   
+    /* Experimental Options */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
 
     "skipLibCheck": true
   }
