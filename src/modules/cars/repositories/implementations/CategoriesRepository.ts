@@ -1,4 +1,4 @@
-import { getConnection, getRepository, Repository } from "typeorm";
+import { getRepository, Repository } from "typeorm";
 import { Category } from "../../entities/Category";
 import { ICategoriesRepository } from "../ICategoriesRepository";
 
@@ -11,28 +11,9 @@ interface ICreateCategoryDTO {
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
 
-constructor() {
-  console.log("1. Iniciando CategoriesRepository");
-
-  const connection = getConnection();
-
-  console.log("2. Conexão:", connection.name);
-  console.log("3. Conectado:", connection.isConnected);
-
-  console.log(
-    "4. Entidades registradas:",
-    connection.entityMetadatas.map((entity) => entity.name)
-  );
-
-  console.log(
-    "5. Category registrada:",
-    connection.hasMetadata(Category)
-  );
-
-  this.repository = getRepository(Category);
-
-  console.log("6. Repositório criado com sucesso!");
-}
+  constructor() {
+    this.repository = getRepository(Category);  
+  }
 
   async create({ description, name }: ICreateCategoryDTO): Promise<void> {
     const category = this.repository.create({
