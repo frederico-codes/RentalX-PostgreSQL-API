@@ -15,6 +15,10 @@ class User {
   @Column()
   password!: string;
 
+  @Column({ type: "varchar", nullable: true })
+  avatar!: string | null
+
+
   @Column()
   driver_license!: string;
 
