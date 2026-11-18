@@ -8,7 +8,14 @@
     "target": "esnext",
 
     "lib": ["esnext"],
-    "types": ["node"],
+    "types": ["node", "jest"],
+    "paths": {
+      "@modules/*": ["./src/modules/*"],
+      "@config/*": ["./src/config/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@errors/*": ["./src/errors/*"],
+      "@utils/*":["./src/utils/*"]
+    },
 
     "strict": true,
     "esModuleInterop": true,

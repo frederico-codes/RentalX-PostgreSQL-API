@@ -1,12 +1,12 @@
 import express, { json, response } from "express";
-import "./database";
-import "./shared/container";
+import "../typeorm";
+import "../../container";
 import "express-async-errors";
 import { routes } from "./routes";
 import swaggerUI from "swagger-ui-express";
-import swaggerFile from "./swagger.json";
+import swaggerFile from "../../../swagger.json";
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "./errors/AppError";
+import { AppError } from "@errors/AppError";
 
 const app = express();
 
